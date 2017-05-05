@@ -15,7 +15,9 @@ import java.util.List;
 
 /**
  * Created by tyler on 5/4/2017.
- * Shows our PDF
+ * Shows our PDF, uses the 'com.github.barteksc:android-pdf-viewer:2.0.3' dependency
+ * which i found here: https://deepshikhapuri.wordpress.com/2017/02/15/display-pdf-file-inside-my-android-application/
+ * It works like a charm!
  */
 
 public class MyPdfViewActivity extends AppCompatActivity implements OnPageChangeListener,OnLoadCompleteListener {
@@ -28,9 +30,9 @@ public class MyPdfViewActivity extends AppCompatActivity implements OnPageChange
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        pdfView= (PDFView)findViewById(R.id.pdfView);
-        pdfFileName = "LEAD2017_v2.pdf";
+        setContentView(R.layout.activity_pdfviewer);
+        pdfView = (PDFView)findViewById(R.id.pdfView);
+        pdfFileName = "LEAD2017_v2.pdf";//the name of our PDF we want to view
         displayFromAsset();
     }
     /**Displays the PDF from our assests*/
@@ -61,7 +63,7 @@ public class MyPdfViewActivity extends AppCompatActivity implements OnPageChange
         printBookmarksTree(pdfView.getTableOfContents(), "-");
 
     }
-
+    /**Prints our the pdf*/
     public void printBookmarksTree(List<PdfDocument.Bookmark> tree, String sep) {
         for (PdfDocument.Bookmark b : tree) {
 
