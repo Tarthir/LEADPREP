@@ -10,4 +10,185 @@
     <string name="song_button_text">AirForce Song</string>
     <string name="creed_button_text">Airmen\'s Creed</string>
     <string name="myQuiz_button_text">MyQuizes</string>
+    <string name="prompt_text">Please choose a quiz</string>
+
+    <string-array
+        name="chain_of_command_quiz">
+        <item>Who is the President of the United States?</item>
+        <item>The Honourable Donald J Trump</item>
+        <item>Who is the Secretary of Defense?</item>
+        <item>The Honourable James N. Mattis</item>
+        <item>Who is the Secretary of the Air Force?</item>
+        <item>The Honourable Lisa Disbrow</item>
+        <item>Who is the USAF Chief of staff?</item>
+        <item>General David L. Goldfein</item>
+        <item>Who is the Air Education and Training Command commander?</item>
+        <item>Lt General Darryl L. Roberson</item>
+        <item>Who is the Air University commander?</item>
+        <item>Lt General Steven L. Kwast</item>
+        <item>Who is the Holm Center Commander?</item>
+        <item>Brigadier General Steven D. Garland</item>
+    </string-array>
+
+    <string-array
+        name="majcom_quiz">
+        <item>Where is Air Mobility Command?</item>
+        <item>Scott AFB, IL</item>
+        <item>Where is Air Combat Command?</item>
+        <item>Joint Base Langley-Eustis, VA</item>
+        <item>Where is Air Education and Training Command?</item>
+        <item>Joint Base San Antonio-Randolph, TX</item>
+        <item>Where is Air Force Space Command?</item>
+        <item>Peterson AFB, CO</item>
+        <item>Where is Air Force Special Operations Command?</item>
+        <item>Hulburt Field, FL</item>
+        <item>Where is United States Air Forces in Europe?</item>
+        <item>Ramstein AB, Germany</item>
+        <item>Where is Pacific Air Forces?</item>
+        <item>Joint Base Pearl Harbor-Hickam, HI</item>
+        <item>Where is Air Force Material Command?</item>
+        <item>Wright-Patterson AFB, OH</item>
+        <item>Where is Air Force Reserve Command?</item>
+        <item>Robins AFB, GA</item>
+        <item>Where is Air Force Global Strike Command?</item>
+        <item>Barkdale AFB, LA</item>
+    </string-array>
+
+    <string-array name="mission">
+        <item>What is the Air Force Mission?</item>
+        <item>To Fly, Fight and Win... In Air, Space, and CyberSpace</item>
+        <item>What is the Hold Center Mission?</item>
+        <item>Develop the Best Air Force Leaders and Citizens of Character, Dedicated to Serving the Nation</item>
+        <item>What is the AFROTC Mission?</item>
+        <item>Develop Premier Leaders of Character for Tomorrow\'s Air Force</item>
+        <item>What is the AFROTC LEAD Mission?</item>
+        <item>Train and Evaluate Cadets for Potential Entry int othe Professinal Officer Course</item>
+    </string-array>
+    <string-array name="code">
+        <item>What is the first article of the Code of Conduct?</item>
+        <item>I am an American, fighting in the forces which guard my country and our way of life.
+            I am prepared to give my life in their defense. </item>
+        <item>What is the second article of the Code of Conduct?</item>
+        <item>I will never surrender of my own free will. If in command,
+            I will never surrender the members of my command while they still have the means to resist. </item>
+        <item>What is the third article of the Code of Conduct?</item>
+        <item>If I am captured, I will continue to resist by all means available.
+            I will make every effort to escape and aid others to escape.
+            I will accept neither parole nor special favors from the enemy. </item>
+        <item>What is the fourth article of the Code of Conduct></item>
+        <item>If I become a prisoner of war, I will keep faith with my fellow prisoners.
+            I will give no information nor take part in any action which might be harmful to my comrades.
+            If I am senior I will take command.
+            If not I will obey the lawful orders of those appointed over me and back them up in every way. </item>
+        <item>What is the fifth article of the Code of Conduct?</item>
+        <item>When questioned, should I become a prisoner of war, I am required to give name, rank, service number, and date of birth.
+            I will evade answering further questions to the utmost of my ability.
+            I will make no oral or written statements disloyal to my country and its allies or harmful to their cause.</item>
+        <item>What is the sixth article of the Code of Conduct?</item>
+        <item>I will never forget that I am an American, fighting for freedom, responsible for my actions,
+            and dedicated to the principles which made my country free.
+            I will trust in my God and in the United States of America. </item>
+    </string-array>
+
+    <string-array name="Quotes">
+        <item>What is the quote by General Robert E. Lee?</item>
+        <item>“Duty then is the sublimest word in the English language.
+            You should do your duty in all things.  You can never do more.
+            You should never wish to do less.” </item>
+        <item>What is the quote by General Joseph L. Collins?</item>
+        <item>“The American people rightly look to their military leaders to be not only skilled
+             in the technical aspects of the profession of arms, but to be men of integrity.”</item>
+        <item>What is the quote by General Omar Bradley?</item>
+        <item>“Leadership is intangible; therefore no weapon ever designed can replace it.” </item>
+        <item>What is the quote by General Nathan Twining?</item>
+        <item>“If our air forces are never used, they have achieved their finest goal.”</item>
+        <item>What is the quote by General Dwight D. Eisenhower?</item>
+        <item>“If I didn’t have air supremacy, I wouldn’t be here.” </item>
+        <item>What is the quote by General Curtis E. Lemay?</item>
+        <item>“I don’t mind being called tough, because in this racket, it’s tough guys who lead the survivors.”</item>
+        <item>What is the quote by General Ulysses S. Grant?</item>
+        <item>“In every battle, there comes a time when both sides consider themselves beaten; then he who continues the attack wins.”</item>
+        <item>What is the quote by John Stuart Mill?</item>
+        <item>“War is an ugly thing, but not the ugliest of things.  The decayed and degraded state of moral and patriotic feeling,
+            which thinks that nothing is worth war, is much worse.  The person, who has nothing for which he
+            is willing to fight, nothing which is more important than his own personal safety,
+            is a miserable creature and has no chance of being free unless made and kept so by the exertions of better men than himself.” </item>
+        <item>What is the quote by General Charles A. Gaberiel?</item>
+        <item>“Integrity is the fundamental premise for military service in a free society.
+            Without integrity, the moral pillars of our military strength, public trust, and self-respect are lost.” </item>
+        <item>What is the quote by Father Denis Edward O\'Brien?</item>
+        <item>“It is the soldier, not the reporter, who has given us the freedom of the press.
+            It is the soldier, not the poet,who has given us the freedom of speech.
+            It is the soldier, not the campus organizer, who has given us the freedom todemonstrate.
+            It is the soldier who salutes the flag,
+            who serves beneath the flag, and whose coffin is draped by the flag, who allows the protestor to burn the flag.”</item>
+        <item>What is the quote by Alfred Thayer Mahan?</item>
+        <item>“War, once declared, must be waged offensively, aggressively.  The enemy must not be fended off; but smitten down.
+            You may then spare him every exaction, relinquish every gain, but ‘til then he must be struck incessantly and remorselessly.” </item>
+        <item>What is the quote by General George S. Patton?</item>
+        <item>“There is only one sort of discipline – PERFECT DISCIPLINE.
+            Men cannot have good battle discipline and poor administrative discipline.”</item>
+        <item>What is the quote by General Daniel S. "Chappie" James?</item>
+        <item>“The power of excellence is overwhelming.  It is always in demand, and nobody cares about its color.” </item>
+    </string-array>
+
+    <string-array name="afSong">
+        <item>What is the first verse of the Air Force Song?</item>
+        <item>Off we go into the wild blue yonder,
+            Climbing high into the sun;
+            Here they come zooming to meet our thunder,
+            At ‘em boys, give‘er the gun!
+            Down we dive, spouting our flame from under,
+            Off with one helluva roar;
+            We live in fame or go down in flame. Hey!
+            Nothing’ll stop the U.S. Air Force!</item>
+        <item>What is the second verse of the Air Force Song?</item>
+        <item>Minds of men fashioned a crate of thunder,
+            Sent it high into the blue;
+            Hands of men blasted the world asunder;
+            How they lived God only knew!
+            Souls of men dreaming of skies to conquer
+            Gave us wings, ever to soar!
+            With scouts before and bombers galore. Hey!
+            Nothing’ll stop the U.S. Air Force! </item>
+        <item>What is the third verse of the Air Force Song?</item>
+        <item>Here’s a toast to the host
+            Of those who love the vastness of the sky,
+            To a friend we send a message of his brother men who fly.
+            We drink to those who gave their all of old,
+            Then down we roar to score the rainbow’s pot of gold.
+            A toast to the host of men we boast, the U.S. Air Force!</item>
+        <item>What is the fourth verse of the Air Force Song?</item>
+        <item>Off we go into the wild sky yonder,  Keep the wings level and true;
+            If you’d live to be a gray-haired wonder  Keep the nose out of the blue!
+            Flying men, guarding the nation’s border,  We’ll be there, followed by more!
+            In echelon we carry on.  Hey!
+            Nothing’ll stop the U.S. Air Force!</item>
+    </string-array>
+
+    <string-array name="airmen_creed">
+        <item>What is the first stanza of the Airmen\'s Creed?</item>
+        <item>I AM AN AMERICAN AIRMAN.
+            I AM A WARRIOR
+            I HAVE ANSWERED MY NATION’S CALL.</item>
+        <item>What is the second stanza of the Airmen\'s Creed?</item>
+        <item>I AM AN AMERICAN AIRMAN.
+            MY MISSION IS TO FLY, FIGHT AND WIN.
+            I AM FAITHFUL TO A PROUD HERITAGE,
+            A TRADITION OF HONOR,
+            AND A LEGACY OF VALOR.</item>
+        <item>What is the third stanza of the Airmen\'s Creed?</item>
+        <item>I AM AN AMERICAN AIRMAN,
+            GUARDIAN OF FREEDOM AND JUSTICE,
+            MY NATION’S SWORD AND SHIELD,
+            ITS SENTRY AND AVENGER.
+            I DEFEND MY COUNTRY WITH MY LIFE.</item>
+        <item>What is the fourth stanza of the Airmen\'s Creed?</item>
+        <item>I AM AN AMERICAN AIRMAN:
+            WINGMAN, LEADER, WARRIOR.
+            I WILL NEVER LEAVE AN AIRMAN BEHIND,
+            I WILL NEVER FALTER,
+            AND I WILL NOT FAIL.</item>
+    </string-array>
+
 </resources>

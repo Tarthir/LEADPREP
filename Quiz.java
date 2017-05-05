@@ -1,26 +1,41 @@
 package model;
 
 /**
- * Created by tyler on 5/4/2017.
+ * Created by tyler on 5/5/2017.
+ * A singleton class for quizzes, since we only want one quiz at a time
  */
+public class Quiz {
+    //private static Quiz ourInstance;
+    private String[] currQuiz;
+    private int currPosition;
+    private String name;
 
-public enum Quiz {
-    CHAINOFCOMMAND(0),
-    MAJCOM(1),
-    MISSION(2),
-    CODE(4),
-    QUOTES(5),
-    SONG(6),
-    CREED(7),
-    MyQuiz(8);
-
-    private int quizNum;
-
-    Quiz(int num){
-        quizNum = num;
+    public Quiz(String name, String[] newQuiz) {
+        currPosition = 0;
+        this.currQuiz = newQuiz;
     }
 
-    public int getQuizNum() {
-        return quizNum;
+    /**
+     * Gets the current text at the given position and then increments the position counter
+     *
+     * @return The text for the current spot
+     */
+    public String getCurrPositionText() {
+        if(currQuiz == null){
+            return "Please choose a quiz";
+        }
+        String str = currQuiz[currPosition];
+        return str;
+    }
+
+    public void incrementPos(){
+        currPosition++;
+    }
+    public  void decrementPos(){
+        currPosition--;
+    }
+    public String getName() {
+        return name;
     }
 }
+

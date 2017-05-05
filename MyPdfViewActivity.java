@@ -17,12 +17,12 @@ import java.util.List;
  * Created by tyler on 5/4/2017.
  * Shows our PDF, uses the 'com.github.barteksc:android-pdf-viewer:2.0.3' dependency
  * which i found here: https://deepshikhapuri.wordpress.com/2017/02/15/display-pdf-file-inside-my-android-application/
+ * Also referenced here: https://www.quora.com/How-do-you-display-PDF-files-inside-an-Android-application-instead-of-loading-in-WebView-by-appending-PDF-URL-with-a-Google-DOCs-Url-and-launching-a-third-party-PDF-rendering-application-installed-in-the-device-Are-there-any-good-free-PDF-rendering-libraries-available
  * It works like a charm!
  */
 
 public class MyPdfViewActivity extends AppCompatActivity implements OnPageChangeListener,OnLoadCompleteListener {
     private static final String TAG = MainActivity.class.getSimpleName();
-   // public static final String SAMPLE_FILE = "LEAD2017_v2.pdf";
     PDFView pdfView;
     Integer pageNumber = 1;
     String pdfFileName;

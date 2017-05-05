@@ -1,55 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/missile">
-
-    <Button
-        android:text="@string/command_button_text"
+    >
+    <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/chain_button"
-        />
+        android:id="@+id/quiz_selector" />
 
-    <Button
-        android:text="@string/majcom_button_text"
+    <fragment
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/majcom_button" />
+        android:layout_height="450dp"
+        android:name="android.support.v4.app.ListFragment"
+        android:layout_gravity="center"
+        android:id="@+id/fragment_spot" />
 
-    <Button
-        android:text="@string/mission_button_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/mission_button" />
-
-    <Button
-        android:text="@string/code_button_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/code_button" />
-
-    <Button
-        android:text="@string/qoutes_button_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/quotes_button" />
-
-    <Button
-        android:text="@string/song_button_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/song_button" />
-
-    <Button
-        android:text="@string/creed_button_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/creed_button" />
-
-    <Button
-        android:text="@string/myQuiz_button_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/quiz_button" />
-</LinearLayout>
+</FrameLayout>
