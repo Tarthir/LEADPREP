@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">LEADPREPPER</string>
+    <string name="lead_button_text">Lead Manual</string>
+    <string name="warrior_button_text">Warrior Knowledge Quizzes</string>
+    <string name="command_button_text">USAF Chain Of Command</string>
+    <string name="majcom_button_text">USAF Major Commands</string>
+    <string name="mission_button_text">Mission Statements</string>
+    <string name="code_button_text">Code Of Conduct</string>
+    <string name="qoutes_button_text">Quotes</string>
+    <string name="song_button_text">AirForce Song</string>
+    <string name="creed_button_text">Airmen\'s Creed</string>
+    <string name="myQuiz_button_text">MyQuizes</string>
+</resources>
