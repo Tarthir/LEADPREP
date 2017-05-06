@@ -11,6 +11,7 @@ public class Quiz {
     private String name;
 
     public Quiz(String name, String[] newQuiz) {
+        this.name = name;
         currPosition = 0;
         this.currQuiz = newQuiz;
     }
@@ -21,11 +22,7 @@ public class Quiz {
      * @return The text for the current spot
      */
     public String getCurrPositionText() {
-        if(currQuiz == null){
-            return "Please choose a quiz";
-        }
-        String str = currQuiz[currPosition];
-        return str;
+        return currQuiz[currPosition];
     }
 
     public void incrementPos(){
@@ -36,6 +33,14 @@ public class Quiz {
     }
     public String getName() {
         return name;
+    }
+
+    public String[] getCurrQuiz() {
+        return currQuiz;
+    }
+
+    public void setCurrPosition(int currPosition) {
+        this.currPosition = currPosition;
     }
 }
 

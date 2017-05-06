@@ -13,7 +13,7 @@ import java.util.TreeMap;
 public class Model {
     private static Model ourInstance;
     /**The name of the quiz is the key and the Quiz object is the value*/
-    private Map<String,Quiz> ourQuizzes;
+    private Map<String,Quiz> ourQuizzes = new TreeMap<>();;
     /**The currently selected quiz*/
     private Quiz currQuiz;
     //TODO NEED TO SAVE QUIZZES
@@ -31,11 +31,10 @@ public class Model {
     /**A function to add quizzes to the model class
      * @param newQuiz the quiz object*/
     public void addQuiz(Quiz newQuiz){
-        ourQuizzes = new TreeMap<>();
         ourQuizzes.put(newQuiz.getName(),newQuiz);
     }
 
-    public Quiz getCurrQuiz() {
+    public Quiz getCurrQuizObj() {
         return currQuiz;
     }
 

@@ -1,26 +1,15 @@
 package ui;
 
-import android.content.ActivityNotFoundException;
 import android.content.Intent;
-import android.content.res.AssetManager;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.view.View.OnClickListener;
-import android.widget.Toast;
 
 import com.tylerbrady34gmail.leadprepper.R;
-
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 
 /**
  * Created by tyler on 5/4/2017.
@@ -50,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d(TAG,"Quiz button clicked");
-                Intent intent = new Intent(MainActivity.this,QuizChooserActivity.class);
+                Intent intent = new Intent(MainActivity.this, QuizChooserActivity.class);
                 startActivity(new Intent(intent));
             }
         });

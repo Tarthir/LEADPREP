@@ -31,22 +31,24 @@ public class QuizFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //Add default quizzes to the model
-        Model.getInstance().addQuiz(new Quiz("Chain of Command quiz",getResources().getStringArray(R.array.chain_of_command_quiz)));
-        Model.getInstance().addQuiz(new Quiz("Majcom quiz",getResources().getStringArray(R.array.majcom_quiz)));
-        Model.getInstance().addQuiz(new Quiz("Mission Statement quiz",getResources().getStringArray(R.array.mission)));
-        Model.getInstance().addQuiz(new Quiz("Code of Conduct quiz",getResources().getStringArray(R.array.code)));
-        Model.getInstance().addQuiz(new Quiz("Quotes quiz",getResources().getStringArray(R.array.Quotes)));
-        Model.getInstance().addQuiz(new Quiz("AF Song quiz",getResources().getStringArray(R.array.afSong)));
-        Model.getInstance().addQuiz(new Quiz("Airmen's Creed quiz",getResources().getStringArray(R.array.airmen_creed)));
+
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = super.onCreateView(inflater, container, savedInstanceState);
-        mQuizText = (TextView) view.findViewById(R.id.quiz_textview);
-        mQuizText.setText(Model.getInstance().getCurrQuiz().getCurrPositionText());//set quiz text
-        return  view;
+        View v = inflater.inflate(R.layout.fragment_quizview, container, false);
+        mQuizText = (TextView) v.findViewById(R.id.quiz_textview);
+        mQuizText.setText(getArguments().getString("msg"));//set quiz text
+        return  v;
+    }
+    public static QuizFragment newInstance() {
+
+        QuizFragment f = new QuizFragment();
+        Bundle b = new Bundle();
+        b.putString("msg",Model.getInstance().getCurrQuizObj().getCurrPositionText());
+        f.setArguments(b);
+
+        return f;
     }
 }
