@@ -28,6 +28,7 @@ public class MyPagerAdapter extends FragmentPagerAdapter {
         if(Model.getInstance().getCurrQuizObj() != null) {
             return Model.getInstance().getCurrQuizObj().getCurrQuiz().length;
         }
-        return 1;
+        return 0;
     }
+
 }

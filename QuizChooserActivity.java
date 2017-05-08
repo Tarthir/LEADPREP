@@ -1,9 +1,12 @@
 package ui;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -26,69 +29,32 @@ import model.Quiz;
 public class QuizChooserActivity extends AppCompatActivity {
     private Spinner mQuizSelector;
     private boolean isSpinnerTouched = false;
+    private RecyclerView mQuizRecycler;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz_chooser);
-        setupSpinner();
+        setupQuizes();
+        mQuizRecycler = (RecyclerView) findViewById(R.id.quiz_recycler);
+        ArrayList<Quiz> quizzes =  new ArrayList<>();
+        quizzes.addAll(Model.getInstance().getOurQuizzes().values());//converts Colelction to Arraylist
+        QuizAdapter filterAdapter = new QuizAdapter(this,quizzes);
+
+        mQuizRecycler.setLayoutManager(new LinearLayoutManager(this));
+        mQuizRecycler.setAdapter(filterAdapter);
 
     }
-
-    private void setupSpinner() {
+    /**Setups our quizzes in the model*/
+    private void setupQuizes() {
         //Add default quizzes to the model
-        Model.getInstance().addQuiz(new Quiz("Chain of Command quiz",getResources().getStringArray(R.array.chain_of_command_quiz)));
-        Model.getInstance().addQuiz(new Quiz("Majcom quiz",getResources().getStringArray(R.array.majcom_quiz)));
-        Model.getInstance().addQuiz(new Quiz("Mission Statement quiz",getResources().getStringArray(R.array.mission)));
-        Model.getInstance().addQuiz(new Quiz("Code of Conduct quiz",getResources().getStringArray(R.array.code)));
-        Model.getInstance().addQuiz(new Quiz("Quotes quiz",getResources().getStringArray(R.array.Quotes)));
-        Model.getInstance().addQuiz(new Quiz("AF Song quiz",getResources().getStringArray(R.array.afSong)));
-        Model.getInstance().addQuiz(new Quiz("Airmen's Creed quiz",getResources().getStringArray(R.array.airmen_creed)));
-
-        mQuizSelector = (Spinner) findViewById(R.id.quiz_spinner);
-        List<String> list = new ArrayList<>();
-        if(Model.getInstance().getCurrQuizObj() != null) {//if there is one already selected
-            list.add(Model.getInstance().getCurrQuizObj().getName());//the current quiz is the first in the spinner
-        }
-        else{
-            mQuizSelector.setPrompt("Pick Quiz Here");
-        }
-
-        for(String name : Model.getInstance().getOurQuizzes().keySet()){
-            if((Model.getInstance().getCurrQuizObj() != null && !Model.getInstance().getCurrQuizObj().getName().equals(name))
-                    || Model.getInstance().getCurrQuizObj() == null){//if not the same quiz
-
-                list.add(name);
-            }
-        }
-        //setup adapter
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, list);
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mQuizSelector.setAdapter(dataAdapter);
-
-        mQuizSelector.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                isSpinnerTouched = true;
-                return false;
-            }
-        });
-        mQuizSelector.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Log.d("QuizChooserActivity","Item Selected in spinner");
-                if (!isSpinnerTouched) return;
-
-                String nameAtPos = (String)parent.getItemAtPosition(position);//the key which is in the spinner
-                Model.getInstance().setCurrQuiz(Model.getInstance().getOurQuizzes().get(nameAtPos));//give the model the selected quiz
-                Intent intent = new Intent(QuizChooserActivity.this,QuizActivity.class);
-                startActivity(intent);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
+        Resources r = getResources();
+        Model.getInstance().addQuiz(new Quiz("Chain of Command quiz",r.getStringArray(R.array.chain_of_command_quiz),r.getStringArray(R.array.chain_of_command_answers)));
+        Model.getInstance().addQuiz(new Quiz("Majcom quiz",r.getStringArray(R.array.majcom_quiz),r.getStringArray(R.array.majcom_answers)));
+        Model.getInstance().addQuiz(new Quiz("Mission Statement quiz",r.getStringArray(R.array.mission),r.getStringArray(R.array.mission_answers)));
+        Model.getInstance().addQuiz(new Quiz("Code of Conduct quiz",r.getStringArray(R.array.code),r.getStringArray(R.array.code_answers)));
+        Model.getInstance().addQuiz(new Quiz("Quotes' quiz",r.getStringArray(R.array.Quotes),r.getStringArray(R.array.quotes_answer)));
+        Model.getInstance().addQuiz(new Quiz("AF Song quiz",r.getStringArray(R.array.afSong),r.getStringArray(R.array.afSong_answers)));
+        Model.getInstance().addQuiz(new Quiz("Airmen's Creed quiz",r.getStringArray(R.array.airmen_creed),r.getStringArray(R.array.creed_answers)));
     }
 }
