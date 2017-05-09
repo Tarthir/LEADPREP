@@ -1,10 +1,13 @@
 package ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.tylerbrady34gmail.leadprepper.R;
 
@@ -49,6 +52,29 @@ public class QuizActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home:
+                finish();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        boolean bool = super.onCreateOptionsMenu(menu);
+        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        getMenuInflater().inflate(R.menu.mymenu,menu);
+        actionBar.setHomeButtonEnabled(true);
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        //IconDrawable draw = new IconDrawable(this, Iconify.IconValue.fa_angle_double_up).colorRes(R.color.white).sizeDp(40);
+        //menu.getItem(0).setIcon(draw);//sets filter item to have the right icon
+        return bool;
     }
 
 }

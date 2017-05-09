@@ -17,10 +17,13 @@ public class MyPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int pos) {
-        if(Model.getInstance().getCurrQuizObj() != null) {
-            Model.getInstance().getCurrQuizObj().setCurrPosition(pos);//update the current position
+        Model.getInstance().getCurrQuizObj().setCurrPosition(pos);//update the current position
+        QuizFragment frag = QuizFragment.newInstance();//makes the new fragment with the right text
+        //since this method is called twice for the current fragment and the one to the right, we want to reset to pos - 1
+        if(pos > 0) {
+            Model.getInstance().getCurrQuizObj().setCurrPosition(pos - 1);
         }
-        return QuizFragment.newInstance();
+        return frag;
     }
 
     @Override

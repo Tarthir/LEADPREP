@@ -1,13 +1,17 @@
 package ui;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+
 import com.github.barteksc.pdfviewer.PDFView;
 import com.github.barteksc.pdfviewer.listener.OnLoadCompleteListener;
 import com.github.barteksc.pdfviewer.listener.OnPageChangeListener;
 import com.github.barteksc.pdfviewer.scroll.DefaultScrollHandle;
+import com.joanzapata.android.iconify.IconDrawable;
+import com.joanzapata.android.iconify.Iconify;
 import com.shockwave.pdfium.PdfDocument;
 import com.tylerbrady34gmail.leadprepper.R;
 
@@ -73,5 +77,28 @@ public class MyPdfViewActivity extends AppCompatActivity implements OnPageChange
                 printBookmarksTree(b.getChildren(), sep + "-");
             }
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        boolean bool = super.onCreateOptionsMenu(menu);
+        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        getMenuInflater().inflate(R.menu.mymenu,menu);
+        actionBar.setHomeButtonEnabled(true);
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        //IconDrawable draw = new IconDrawable(this, Iconify.IconValue.fa_ellipsis_h).colorRes(R.color.white).sizeDp(40);
+        //menu.getItem(0).setIcon(draw);//sets filter item to have the right icon
+        return bool;
     }
 }

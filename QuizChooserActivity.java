@@ -8,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
@@ -56,5 +58,28 @@ public class QuizChooserActivity extends AppCompatActivity {
         Model.getInstance().addQuiz(new Quiz("Quotes' quiz",r.getStringArray(R.array.Quotes),r.getStringArray(R.array.quotes_answer)));
         Model.getInstance().addQuiz(new Quiz("AF Song quiz",r.getStringArray(R.array.afSong),r.getStringArray(R.array.afSong_answers)));
         Model.getInstance().addQuiz(new Quiz("Airmen's Creed quiz",r.getStringArray(R.array.airmen_creed),r.getStringArray(R.array.creed_answers)));
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home:
+                finish();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        boolean bool = super.onCreateOptionsMenu(menu);
+        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        getMenuInflater().inflate(R.menu.mymenu,menu);
+        actionBar.setHomeButtonEnabled(true);
+        actionBar.setDisplayHomeAsUpEnabled(true);
+       // IconDrawable draw = new IconDrawable(this, Iconify.IconValue.fa_angle_double_up).colorRes(R.color.white).sizeDp(40);
+        //menu.getItem(0).setIcon(draw);//sets filter item to have the right icon
+        return bool;
     }
 }

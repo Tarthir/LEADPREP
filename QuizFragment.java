@@ -28,7 +28,8 @@ public class QuizFragment extends Fragment {
     private final String TAG = "QuizFrag";
     /**If we are showing the question or answer*/
     private boolean showingQuestion = true;
-
+    /***/
+    private boolean isFirst = true;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
