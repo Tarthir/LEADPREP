@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -25,9 +26,13 @@ public class QuizActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
-        //THe adapter handles the movement of our quiz pages
+        //The adapter handles the movement of our quiz pages
         viewPager = (ViewPager) findViewById(R.id.view_pager);
         viewPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
+        //We will hold every card that is off screen.
+        //TODO figure out how to get text not being overwritten and we wont have to do this
+        viewPager.setOffscreenPageLimit(Model.getInstance().getCurrQuizObj().getCurrQuiz().length);
+
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             float sumPostAndOffset;
             @Override
@@ -43,7 +48,7 @@ public class QuizActivity extends AppCompatActivity {
 
             @Override
             public void onPageSelected(int position) {
-                Model.getInstance().getCurrQuizObj().setCurrPosition(position);
+               Model.getInstance().setPos(position);
             }
 
             @Override
@@ -69,12 +74,14 @@ public class QuizActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         boolean bool = super.onCreateOptionsMenu(menu);
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
-        getMenuInflater().inflate(R.menu.mymenu,menu);
+        getMenuInflater().inflate(R.menu.defaultmenu,menu);
         actionBar.setHomeButtonEnabled(true);
         actionBar.setDisplayHomeAsUpEnabled(true);
         //IconDrawable draw = new IconDrawable(this, Iconify.IconValue.fa_angle_double_up).colorRes(R.color.white).sizeDp(40);
         //menu.getItem(0).setIcon(draw);//sets filter item to have the right icon
         return bool;
     }
+
+
 
 }

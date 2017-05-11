@@ -5,31 +5,29 @@ package model;
  * A singleton class for quizzes, since we only want one quiz at a time
  */
 public class Quiz {
-    //private static Quiz ourInstance;
     private String[] currQuiz;
     private String[] currQuizAnswers;
-    private int currPosition;
     private String name;
 
     public Quiz(String name, String[] newQuiz,String[] newQAnswers) {
         this.name = name;
-        currPosition = 0;
         this.currQuiz = newQuiz;
         this.currQuizAnswers = newQAnswers;
     }
 
     /**
      * Gets the current text at the given position and then increments the position counter
-     *
+     * @param currPosition , the current position of the cards
      * @return String, The text for the current spot
      */
-    public String getCurrQuestionText() {
+    public String getCurrQuestionText(int currPosition) {
         return currQuiz[currPosition];
     }
+
     /**Gets text for the answer to the current question
-     *
+     * @param currPosition , the current position of the cards
      * @return String, the text for the answer*/
-    public String getCurrAnswerText(){
+    public String getCurrAnswerText(int currPosition){
         return currQuizAnswers[currPosition];
     }
 
@@ -41,12 +39,5 @@ public class Quiz {
         return currQuiz;
     }
 
-    public void setCurrPosition(int currPosition) {
-        this.currPosition = currPosition;
-    }
-
-    public int getCurrPosition() {
-        return currPosition;
-    }
 }
 

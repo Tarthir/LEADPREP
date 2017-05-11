@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -28,7 +29,7 @@ import model.Quiz;
  * Created by tyler on 5/6/2017.
  */
 
-public class QuizChooserActivity extends AppCompatActivity {
+public class QuizChooserActivity extends AppCompatActivity implements EditDialogListener{
     private Spinner mQuizSelector;
     private boolean isSpinnerTouched = false;
     private RecyclerView mQuizRecycler;
@@ -67,6 +68,9 @@ public class QuizChooserActivity extends AppCompatActivity {
             case android.R.id.home:
                 finish();
                 break;
+            case R.id.new_quiz_button:
+                showEditDialog();
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -81,5 +85,26 @@ public class QuizChooserActivity extends AppCompatActivity {
        // IconDrawable draw = new IconDrawable(this, Iconify.IconValue.fa_angle_double_up).colorRes(R.color.white).sizeDp(40);
         //menu.getItem(0).setIcon(draw);//sets filter item to have the right icon
         return bool;
+    }
+
+    /**Shows the new quiz dialog*/
+    private void showEditDialog() {
+        FragmentManager fm = getSupportFragmentManager();
+        NewQuizFragment editDialogFragment = NewQuizFragment.newInstance();
+        editDialogFragment.show(fm, "fragment_new_quiz");
+    }
+    /**Shows the new slide dialog*/
+    private void showEditSlideDialog() {
+        FragmentManager fm = getSupportFragmentManager();
+        NewSlideFragment editDialogFragment = NewSlideFragment.newInstance();
+        editDialogFragment.show(fm, "fragment_new_slide");
+    }
+
+    @Override
+    public void onFinishedDialogListener(Bundle bundle) {
+        //if we are supposed to keep going or if the quiz has been submitted
+        if((boolean)bundle.get("keepgoing")) {
+            showEditSlideDialog();
+        }
     }
 }

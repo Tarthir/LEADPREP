@@ -22,61 +22,33 @@ import model.Model;
 public class QuizFragment extends Fragment {
     /**Our textview for the answer/question*/
     private TextView mQuizText;
-    /**Shows answer/question*/
-    private Button mToggleTextButton;
     /**Tag for our logger*/
     private final String TAG = "QuizFrag";
     /**If we are showing the question or answer*/
-    private boolean showingQuestion = true;
-    /***/
-    private boolean isFirst = true;
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    private boolean isFlipped = true;
 
-    }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         Log.d(TAG,"OncreateView Entered");
+        //get whether the card is flipped or not
+        isFlipped = (boolean)getArguments().get("args");
+        int pos = (int)getArguments().get("pos");//where we are in the cards
         View v = inflater.inflate(R.layout.fragment_quizview, container, false);
-        mToggleTextButton = (Button) v.findViewById(R.id.toggle_button);
-        mToggleTextButton.setText(R.string.button_showA);
         mQuizText = (TextView) v.findViewById(R.id.quiz_textview);
-        mQuizText.setText(getArguments().getString("msg"));//set quiz text
-        setupClickers();
+
+        if(!isFlipped){
+            if(mQuizText.getText().equals("")) {
+                mQuizText.setText(Model.getInstance().getCurrQuizObj().getCurrQuestionText(pos));//set quiz text
+            }
+        }
+        else{
+            if(mQuizText.getText().equals("")) {
+                mQuizText.setText(Model.getInstance().getCurrQuizObj().getCurrAnswerText(pos));//set answer text
+            }
+        }
         return  v;
     }
-    /**Sets up clickers for our member variables*/
-    private void setupClickers() {
-        mToggleTextButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(showingQuestion) {//if we are currently showing the answer
-                    Log.d(TAG,"Showing answer");
-                    mToggleTextButton.setText(R.string.button_showQ);
-                    //show the answer
-                    mQuizText.setText(Model.getInstance().getCurrQuizObj().getCurrAnswerText());
-                }
-                else {
-                    Log.d(TAG,"Showing question");
-                    mToggleTextButton.setText(R.string.button_showA);
-                    //show the question
-                    mQuizText.setText(Model.getInstance().getCurrQuizObj().getCurrQuestionText());
-                }
-                //toggle boolean
-                showingQuestion = !showingQuestion;
-            }
-        });
-    }
 
-    public static QuizFragment newInstance() {
-        QuizFragment f = new QuizFragment();
-        Bundle b = new Bundle();
-        b.putString("msg",Model.getInstance().getCurrQuizObj().getCurrQuestionText());
-        f.setArguments(b);
-
-        return f;
-    }
 }

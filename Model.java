@@ -16,6 +16,8 @@ public class Model {
     private Map<String,Quiz> ourQuizzes = new TreeMap<>();;
     /**The currently selected quiz*/
     private Quiz currQuiz;
+    /**Position in deck of cards for the quiz*/
+    private int currPos = 0;
     //TODO NEED TO SAVE QUIZZES
 
     private Model() {
@@ -44,5 +46,18 @@ public class Model {
 
     public Map<String, Quiz> getOurQuizzes() {
         return ourQuizzes;
+    }
+
+    public int getCurrPos() {
+        return currPos;
+    }
+    public void incrementPos(){
+        ++currPos;
+    }
+    public  void decrementPos(){
+        --currPos;
+    }
+    public void setPos(int pos){
+        currPos = pos;
     }
 }
