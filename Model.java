@@ -18,6 +18,8 @@ public class Model {
     private Quiz currQuiz;
     /**Position in deck of cards for the quiz*/
     private int currPos = 0;
+    /**Current new quiz name and description*/
+    private Quiz newQuiz;
     //TODO NEED TO SAVE QUIZZES
 
     private Model() {
@@ -59,5 +61,13 @@ public class Model {
     }
     public void setPos(int pos){
         currPos = pos;
+    }
+
+    public Quiz getNewQuiz() {
+        return newQuiz;
+    }
+
+    public void setNewQuiz(Quiz newQuiz) {
+        this.newQuiz = newQuiz;
     }
 }

@@ -29,7 +29,7 @@ public class MyPagerAdapter extends FragmentPagerAdapter {
     @Override
     public int getCount() {
         if(Model.getInstance().getCurrQuizObj() != null) {
-            return Model.getInstance().getCurrQuizObj().getCurrQuiz().length;
+            return Model.getInstance().getCurrQuizObj().getCurrQuiz().size();
         }
         return 0;
     }

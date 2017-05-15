@@ -11,8 +11,11 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.tylerbrady34gmail.leadprepper.R;
+
+import model.Model;
 
 /**
  * Created by tyler on 5/11/2017.
@@ -55,15 +58,21 @@ public class NewQuizFragment extends DialogFragment {
             public void onClick(View v) {
                 //if they have entered in something
                 if(mQuizName.getText().length() > 0 && mDescriptor.getText().length() > 0) {
-                    Bundle bundle = new Bundle();
-                    bundle.putBoolean("keepgoing",true);
-                    bundle.putString("name", mQuizName.getText().toString());
-                    bundle.putString("descriptor", mDescriptor.getText().toString());
-                    // Return input text back to activity through the implemented listener
-                    EditDialogListener listener = (EditDialogListener) getActivity();
-                    listener.onFinishedDialogListener(bundle);
-                    // Close the dialog and return back to the parent activity
-                    dismiss();
+                    //if this quiz name has not already been used
+                    if(!Model.getInstance().getOurQuizzes().containsKey(mQuizName.getText().toString())) {
+                        Bundle bundle = new Bundle();
+                        bundle.putBoolean("keepgoing", true);
+                        bundle.putString("name", mQuizName.getText().toString());
+                        bundle.putString("descriptor", mDescriptor.getText().toString());
+                        // Return input text back to activity through the implemented listener
+                        EditDialogListener listener = (EditDialogListener) getActivity();
+                        listener.onFinishedDialogListener(bundle);
+                        // Close the dialog and return back to the parent activity
+                        dismiss();
+                    }
+                    else{
+                        Toast.makeText(getActivity(),"Quiz name already used, please change the name",Toast.LENGTH_LONG).show();
+                    }
                 }
             }
         });

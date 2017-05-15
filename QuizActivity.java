@@ -31,7 +31,7 @@ public class QuizActivity extends AppCompatActivity {
         viewPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
         //We will hold every card that is off screen.
         //TODO figure out how to get text not being overwritten and we wont have to do this
-        viewPager.setOffscreenPageLimit(Model.getInstance().getCurrQuizObj().getCurrQuiz().length);
+        viewPager.setOffscreenPageLimit(Model.getInstance().getCurrQuizObj().getCurrQuiz().size());
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             float sumPostAndOffset;
