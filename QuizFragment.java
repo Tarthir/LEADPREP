@@ -26,6 +26,12 @@ public class QuizFragment extends Fragment {
     private final String TAG = "QuizFrag";
     /**If we are showing the question or answer*/
     private boolean isFlipped = true;
+    /**Listens for message to send to parent activity*/
+    private OnChildFragmentInteractionListener mParentListener;
+    /**Goes to parent and calls flipcard() method*/
+    public interface OnChildFragmentInteractionListener {
+        void messageFromChildToParent();
+    }
 
 
     @Nullable
@@ -37,6 +43,15 @@ public class QuizFragment extends Fragment {
         int pos = (int)getArguments().get("pos");//where we are in the cards
         View v = inflater.inflate(R.layout.fragment_quizview, container, false);
         mQuizText = (TextView) v.findViewById(R.id.quiz_textview);
+        //setup listener to parent
+        mParentListener = (OnChildFragmentInteractionListener) getParentFragment();
+        //setup on click to flip card
+        mQuizText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mParentListener.messageFromChildToParent();
+            }
+        });
 
         if(!isFlipped){
             if(mQuizText.getText().equals("")) {
@@ -50,5 +65,6 @@ public class QuizFragment extends Fragment {
         }
         return  v;
     }
+
 
 }

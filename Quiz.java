@@ -87,21 +87,6 @@ public class Quiz implements Serializable {
         count = counter;
     }
 
-    public void saveQuiz(Context context) throws IOException{
-        String fileName = "my_data" + count;
-        FileOutputStream fos = context.openFileOutput(fileName, Context.MODE_PRIVATE);
-        ObjectOutputStream os = new ObjectOutputStream(fos);
-        os.writeObject(this);
-        os.close();
-        fos.close();
-        count++;//more files to go through
-        //save the number of quizzes created
-        SharedPreferences settings = context.getSharedPreferences(Utils.PREFS_NAME, 0);
-        SharedPreferences.Editor editor = settings.edit();
-        editor.putInt("numOfQuizzes",count);
-        editor.apply();
-
-    }
 
 
 }

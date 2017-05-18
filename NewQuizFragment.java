@@ -26,6 +26,8 @@ public class NewQuizFragment extends DialogFragment {
     private EditText mDescriptor;
     private Button mSubmitButton;
 
+
+
     public NewQuizFragment() {
         // Empty constructor is required for DialogFragment
         // Make sure not to add arguments to the constructor
@@ -85,5 +87,6 @@ public class NewQuizFragment extends DialogFragment {
         getDialog().getWindow().setSoftInputMode(
                 WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
     }
+
 
 }

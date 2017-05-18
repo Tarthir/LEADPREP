@@ -27,6 +27,7 @@ import java.util.Set;
 
 import model.Model;
 import model.Quiz;
+import model.Utils;
 
 /**
  * Created by tyler on 5/15/2017.
@@ -112,7 +113,7 @@ public class QuizAdder extends AppCompatActivity implements EditDialogListener {
      */
     private void saveQuiz(Quiz newQuiz) {
         try {
-            newQuiz.saveQuiz(this);
+            Utils.saveQuiz(this,Quiz.getCount(),newQuiz);
         } catch (IOException i) {
             i.printStackTrace();
             Toast.makeText(this, "Error saving Quiz, please try again", Toast.LENGTH_SHORT).show();
@@ -143,4 +144,5 @@ public class QuizAdder extends AppCompatActivity implements EditDialogListener {
         CheckSubmitFrag editDialogFragment = CheckSubmitFrag.newInstance();
         editDialogFragment.show(fm, "fragment_checksubmit");
     }
+
 }

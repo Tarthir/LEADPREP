@@ -60,8 +60,6 @@ public class QuizChooserActivity extends AppCompatActivity implements EditDialog
      * Setups our quizzes in the model
      */
     private void setupQuizes() {
-        //Add default quizzes to the model
-        Resources r = getResources();
         try {
             getQuizzes();
         } catch (IOException e) {
@@ -71,26 +69,13 @@ public class QuizChooserActivity extends AppCompatActivity implements EditDialog
             e.printStackTrace();
             Log.d(TAG,e.getMessage());
         }
-        Model.getInstance().addQuiz(new Quiz("Chain of Command quiz", r.getStringArray(R.array.chain_of_command_quiz), r.getStringArray(R.array.chain_of_command_answers)));
-        Model.getInstance().addQuiz(new Quiz("Majcom quiz", r.getStringArray(R.array.majcom_quiz), r.getStringArray(R.array.majcom_answers)));
-        Model.getInstance().addQuiz(new Quiz("Mission Statement quiz", r.getStringArray(R.array.mission), r.getStringArray(R.array.mission_answers)));
-        Model.getInstance().addQuiz(new Quiz("Code of Conduct quiz", r.getStringArray(R.array.code), r.getStringArray(R.array.code_answers)));
-        Model.getInstance().addQuiz(new Quiz("Quotes' quiz", r.getStringArray(R.array.Quotes), r.getStringArray(R.array.quotes_answer)));
-        Model.getInstance().addQuiz(new Quiz("AF Song quiz", r.getStringArray(R.array.afSong), r.getStringArray(R.array.afSong_answers)));
-        Model.getInstance().addQuiz(new Quiz("Airmen's Creed quiz", r.getStringArray(R.array.airmen_creed), r.getStringArray(R.array.creed_answers)));
     }
 
     private void getQuizzes() throws IOException, ClassNotFoundException {
         // Restore preferences
-        SharedPreferences settings = getSharedPreferences(Utils.PREFS_NAME, 0);
-        Quiz.setCount(settings.getInt("numOfQuizzes",0));
-        for(int i = 0; i <= Quiz.getCount(); i++) {
-            String fileName = "my_data" + i;//grab all the files containing objects that have been saved
-            FileInputStream fis = this.openFileInput(fileName);
-            ObjectInputStream is = new ObjectInputStream(fis);
-            Quiz quiz = (Quiz) is.readObject();
-            is.close();
-            fis.close();
+        Quiz.setCount(Utils.getNumOfSavedQuizzes(this));
+        for(int i = 0; i < Quiz.getCount(); i++) {
+            Utils.loadFile(this,i);
         }
     }
 
