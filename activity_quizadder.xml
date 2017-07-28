@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/enter_question"
+        android:id="@+id/enter_question_edit"
+        android:textAlignment="center"
+        android:layout_gravity="center"
+        android:layout_weight="4"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/enter_answer_edit"
+        android:layout_weight="4"
+        android:textAlignment="center"
+        android:hint="@string/enter_answer"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        android:id="@+id/add_button_slide"
+        android:text="@string/add_button"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        android:id="@+id/submit_quiz_button"
+        android:text="@string/submit_button"/>
+
+</LinearLayout>

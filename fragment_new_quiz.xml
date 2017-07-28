@@ -1,0 +1,35 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fragment_make_quiz"
+    android:layout_width="wrap_content"
+    android:layout_height="200dp"
+    android:layout_gravity="center"
+    android:orientation="vertical"  >
+
+    <EditText
+        android:id="@+id/enter_quiz_name:"
+        android:hint="@string/enter_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_gravity="center"
+        android:textAlignment="center"/>
+
+    <EditText
+        android:id="@+id/enter_quiz_descriptor"
+        android:hint="@string/enter_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="3"
+        android:layout_gravity="center"
+        android:imeOptions="actionDone"
+        android:textAlignment="center"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        android:id="@+id/submit_button"
+        android:text="@string/submit_button"/>
+</LinearLayout>
