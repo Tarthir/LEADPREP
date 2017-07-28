@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -73,8 +74,8 @@ public class QuizChooserActivity extends AppCompatActivity implements EditDialog
 
     private void getQuizzes() throws IOException, ClassNotFoundException {
         // Restore preferences
-        Quiz.setCount(Utils.getNumOfSavedQuizzes(this));
-        for(int i = 0; i < Quiz.getCount(); i++) {
+        Model.getInstance().setNumOfQuizzes(Utils.getNumOfSavedQuizzes(this));
+        for(int i = 0; i < Model.getInstance().getNumOfQuizzes(); i++) {
             Utils.loadFile(this,i);
         }
     }

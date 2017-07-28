@@ -21,23 +21,21 @@ import java.util.List;
  * A singleton class for quizzes, since we only want one quiz at a time
  */
 public class Quiz implements Serializable {
+    /**The current quiz questions*/
     private List<String> currQuiz;
+    /**The curr quiz answers*/
     private List<String> currQuizAnswers;
+    /**The name of the quiz*/
     private String name;
+    /**The description of the quiz*/
     private String description;
-    //How many Quizzes we have saved
-    private static int count = 0;
+    /**The file number of this quiz*/
+    private int fileNum;
 
     public Quiz(String name, String[] newQuiz,String[] newQAnswers) {
         this.name = name;
         this.currQuiz = new ArrayList<>(Arrays.asList(newQuiz));
         this.currQuizAnswers = new ArrayList<>(Arrays.asList(newQAnswers));
-    }
-    public Quiz(String name,String description, String[] newQuiz,String[] newQAnswers) {
-        this.name = name;
-        this.currQuiz = new ArrayList<>(Arrays.asList(newQuiz));
-        this.currQuizAnswers = new ArrayList<>(Arrays.asList(newQAnswers));
-        this.description = description;
     }
     public Quiz(String name,String description) {
         this.name = name;
@@ -49,10 +47,6 @@ public class Quiz implements Serializable {
         this.description = description;
         this.currQuiz = newQ;
         this.currQuizAnswers = newQAnswers;
-    }
-
-    public static int getCount() {
-        return count;
     }
 
     /**
@@ -82,12 +76,14 @@ public class Quiz implements Serializable {
     public String getDescription() {
         return description;
     }
-    /**Set the count static variable*/
-    public static void setCount(int counter) {
-        count = counter;
+
+    public void setFileNum(int fileNum) {
+        this.fileNum = fileNum;
     }
 
-
+    public int getFileNum(){
+        return this.fileNum;
+    }
 
 }
 

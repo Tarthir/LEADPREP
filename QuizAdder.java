@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -31,7 +32,7 @@ import model.Utils;
 
 /**
  * Created by tyler on 5/15/2017.
- * Handles editing of quizzes and quiz creation
+ * Handles adding of quizzes to the list of quizzes
  */
 
 
@@ -108,31 +109,22 @@ public class QuizAdder extends AppCompatActivity implements EditDialogListener {
         });
     }
 
-    /**
-     * Saves our quiz object to internal storage
-     */
-    private void saveQuiz(Quiz newQuiz) {
-        try {
-            Utils.saveQuiz(this,Quiz.getCount(),newQuiz);
-        } catch (IOException i) {
-            i.printStackTrace();
-            Toast.makeText(this, "Error saving Quiz, please try again", Toast.LENGTH_SHORT).show();
-            ;
-        }
-    }
-
     @Override
     public void onFinishedDialogListener(Bundle bundle) {
         if (bundle.getBoolean("isYes")) {
             String descrip = Model.getInstance().getNewQuiz().getDescription();
             String name = Model.getInstance().getNewQuiz().getName();
             Quiz newQuiz = new Quiz(name, descrip, questions, answers);
-            Model.getInstance().getOurQuizzes().put(name, newQuiz);
-            saveQuiz(newQuiz);
-
-            Intent intent = new Intent(getApplicationContext(), QuizChooserActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
+            //if the quiz has saved correctly
+            if(Model.getInstance().addQuiz(this,newQuiz)) {
+                Intent intent = new Intent(getApplicationContext(), QuizChooserActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+            }
+            else{
+                Log.e("QuizAdder:OnFinished","Error trying to save quiz");
+                Toast.makeText(this, "Error saving Quiz, please try again", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 

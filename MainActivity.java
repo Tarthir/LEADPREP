@@ -55,27 +55,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-    /**Puts the initial quizzes into the model and saving them*/
-    private void setupIntialQuizzes() {
-        //Add default quizzes to the model
-        Resources r = getResources();
-        Model.getInstance().addQuiz(new Quiz("Chain of Command quiz", r.getStringArray(R.array.chain_of_command_quiz), r.getStringArray(R.array.chain_of_command_answers)));
-        Model.getInstance().addQuiz(new Quiz("Majcom quiz", r.getStringArray(R.array.majcom_quiz), r.getStringArray(R.array.majcom_answers)));
-        Model.getInstance().addQuiz(new Quiz("Mission Statement quiz", r.getStringArray(R.array.mission), r.getStringArray(R.array.mission_answers)));
-        Model.getInstance().addQuiz(new Quiz("Code of Conduct quiz", r.getStringArray(R.array.code), r.getStringArray(R.array.code_answers)));
-        Model.getInstance().addQuiz(new Quiz("Quotes' quiz", r.getStringArray(R.array.Quotes), r.getStringArray(R.array.quotes_answer)));
-        Model.getInstance().addQuiz(new Quiz("AF Song quiz", r.getStringArray(R.array.afSong), r.getStringArray(R.array.afSong_answers)));
-        Model.getInstance().addQuiz(new Quiz("Airmen's Creed quiz", r.getStringArray(R.array.airmen_creed), r.getStringArray(R.array.creed_answers)));
-
-        for(Quiz quiz : Model.getInstance().getOurQuizzes().values()){
-            try {
-                Utils.saveQuiz(this,Utils.getNumOfSavedQuizzes(this),quiz);
-            } catch (IOException e) {
-                Log.d(TAG,e.getMessage());
-                e.printStackTrace();
-            }
-        }
-    }
 
     private void checkFirstRun() {
 
@@ -111,6 +90,19 @@ public class MainActivity extends AppCompatActivity {
 
         // Update the shared preferences with the current version code
         prefs.edit().putInt(PREF_VERSION_CODE_KEY, currentVersionCode).apply();
+    }
+
+    /**Puts the initial quizzes into the model and saving them*/
+    private void setupIntialQuizzes() {
+        //Add default quizzes to the model
+        Resources r = getResources();
+        Model.getInstance().addQuiz(this,new Quiz("Chain of Command quiz", r.getStringArray(R.array.chain_of_command_quiz), r.getStringArray(R.array.chain_of_command_answers)));
+        Model.getInstance().addQuiz(this,new Quiz("Majcom quiz", r.getStringArray(R.array.majcom_quiz), r.getStringArray(R.array.majcom_answers)));
+        Model.getInstance().addQuiz(this,new Quiz("Mission Statement quiz", r.getStringArray(R.array.mission), r.getStringArray(R.array.mission_answers)));
+        Model.getInstance().addQuiz(this,new Quiz("Code of Conduct quiz", r.getStringArray(R.array.code), r.getStringArray(R.array.code_answers)));
+        Model.getInstance().addQuiz(this,new Quiz("Quotes' quiz", r.getStringArray(R.array.Quotes), r.getStringArray(R.array.quotes_answer)));
+        Model.getInstance().addQuiz(this,new Quiz("AF Song quiz", r.getStringArray(R.array.afSong), r.getStringArray(R.array.afSong_answers)));
+        Model.getInstance().addQuiz(this,new Quiz("Airmen's Creed quiz", r.getStringArray(R.array.airmen_creed), r.getStringArray(R.array.creed_answers)));
     }
 
 }

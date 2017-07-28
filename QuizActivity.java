@@ -48,7 +48,7 @@ public class QuizActivity extends AppCompatActivity {
 
             @Override
             public void onPageSelected(int position) {
-               Model.getInstance().setPos(position);
+               //Model.getInstance().setPos(position);
             }
 
             @Override

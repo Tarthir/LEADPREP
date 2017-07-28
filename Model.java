@@ -1,8 +1,10 @@
 package model;
 
-import com.tylerbrady34gmail.leadprepper.R;
+import android.content.Context;
+import android.util.Log;
+import android.widget.Toast;
 
-import java.util.ArrayList;
+import java.io.IOException;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -16,10 +18,11 @@ public class Model {
     private Map<String,Quiz> ourQuizzes = new TreeMap<>();;
     /**The currently selected quiz*/
     private Quiz currQuiz;
-    /**Position in deck of cards for the quiz*/
-    private int currPos = 0;
     /**Current new quiz name and description*/
     private Quiz newQuiz;
+    /**Number of quizzes we have saved*/
+    private static int numOfQuizzes = 0;
+
     //TODO NEED TO SAVE QUIZZES
 
     private Model() {
@@ -33,9 +36,32 @@ public class Model {
         return ourInstance;
     }
     /**A function to add quizzes to the model class
-     * @param newQuiz the quiz object*/
-    public void addQuiz(Quiz newQuiz){
-        ourQuizzes.put(newQuiz.getName(),newQuiz);
+     * The quizzes are given the current number of quizzes as their file "number" which will help us save/load them as needed
+     * @param newQuiz the quiz object
+     * @return a boolean. If this quis was added and saved correctly*/
+    public boolean addQuiz(Context context, Quiz newQuiz){
+        newQuiz.setFileNum(getNumOfQuizzes());
+        numOfQuizzes++;//increment
+        //save the quiz
+        try {
+            Utils.saveQuiz(context,newQuiz);
+            ourQuizzes.put(newQuiz.getName(),newQuiz);//add it
+            return true;
+        } catch (IOException e) {
+            Log.e("Model:addQuiz method",e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public void setNumOfQuizzes(int num){
+        numOfQuizzes = num;
+    }
+
+    public void decrementNumOfQuizzes(){ numOfQuizzes--;}
+
+    public int getNumOfQuizzes(){
+        return numOfQuizzes;
     }
 
     public Quiz getCurrQuizObj() {
@@ -48,19 +74,6 @@ public class Model {
 
     public Map<String, Quiz> getOurQuizzes() {
         return ourQuizzes;
-    }
-
-    public int getCurrPos() {
-        return currPos;
-    }
-    public void incrementPos(){
-        ++currPos;
-    }
-    public  void decrementPos(){
-        --currPos;
-    }
-    public void setPos(int pos){
-        currPos = pos;
     }
 
     public Quiz getNewQuiz() {
